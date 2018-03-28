@@ -20,6 +20,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
         txtInput.clearButtonMode = UITextFieldViewMode.whileEditing
         
         // Do any additional setup after loading the view, typically from a nib.
+        // Delegate와 ViewController 연결
+        txtInput.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +39,18 @@ class ViewController: UIViewController,UITextFieldDelegate {
         txtInput.resignFirstResponder()
         view.backgroundColor = UIColor.yellow
     }
+    
+    //UITextFieldDelegate Method
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        txtInput.resignFirstResponder()
+        view.backgroundColor = UIColor.black
+        return true
+    }
 
+    //clear button 눌렀을때 호출
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        txtInput.backgroundColor = UIColor.cyan
+        return true
+    }
 }
 
